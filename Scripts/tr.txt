@@ -1,0 +1,74 @@
+### tr command in Bash
+
+# tr: translate a set of characters to another
+# tr [options] set1 set2
+
+echo 'HELLO WORLD' | tr 'A-Z' 'a-z'
+
+cat > test.txt
+HOW ARE YOU?
+THIS is a test file.
+
+cat test.txt | tr 'A-Z' 'a-z'
+
+# A great use of tr is in biological sequences:
+# finding complemeting strand of DNA 
+
+echo ACGTGGTTCAACA | tr 'ACGT' 'TGCA'
+
+#lets use tr to encrypt and decrypt
+
+echo 1234 | tr '0-9' 'a-i'
+
+echo ccda | tr 'a-i' '0-9' 
+
+
+#ROT13 encryption
+
+echo hello world | tr 'a-zA-Z' 'n-za-mN-ZA-M'
+
+
+
+#Substitution with tr:
+
+tr '\t' ' ' < file.txt
+
+# deleting with tr:
+
+echo Hello world 1234 | tr -d '0-9'
+
+# To delete except the set of chars;
+
+echo Hello world 1234 | tr -d -c '0-9 \n'
+
+# complementing with -c
+
+echo Hello world 1234 | tr -c '0-9 \n' ' '
+
+echo Hello world 1234 | tr -c 'a-zA-Z \n' ' '
+
+# Squeezing with tr:
+
+echo 'Hello    World; Python  is    Great        ?' | tr -s '  '
+
+# sequeeze extra newlines:
+
+cat > test.txt
+line1
+
+
+line2 
+
+
+
+
+line3
+
+tr -s '\n' < test.txt
+
+# Character classes:
+
+echo 'HELLO WORLD' | tr '[:upper:]' '[:lower:]'
+
+
+

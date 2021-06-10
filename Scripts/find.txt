@@ -1,0 +1,53 @@
+
+Name: find
+Description: find command
+
+
+#find based on name
+find [path] -name [file name] -print
+find [path] -iname [file name] -print #ignore case
+
+#use logical operations
+find [path] \( -iname [file name] -o -iname [file name] \) -print # -o and -or for 'or'
+
+find [path] \( -iname [file name] -a -iname [file name] \) -print # -a and -and for 'and'
+
+#find based on -regex
+find [path] -regex [regex] -print
+
+#negative args with !
+find [path] ! -iname [file name]
+
+#use directory depth
+find [path] -maxdepth [value] -iname [filename]
+find [path] -mindepth [value] -iname [filename]
+
+#find based on file type
+find [path] -type d -iname [dir name]
+find [path] -type f -iname [file name]
+
+#find based on timestamp
+find [path] -mtime [+/- time]
+find [path] -atime [+/- time]
+find [path] -ctime [+/- time]
+
+#search based on file size;
+find [path] -type f -size [size in G/K/M/c/w/b] -print
+
+#find files based on file permissions;
+find [path] -type f -perm [permission value] -print -print
+
+#find files based on user;
+find [path] -type f -user [USER] -print
+
+#find and delete;
+find [path] -type f -delete
+
+#find and execute a cmd;
+find [path] -type f -exec cmd {} \;
+
+#exclude a particular directory from search with -prune
+find [path] -iname 'Excluded PATH' -prune -o -type f -print
+
+
+
